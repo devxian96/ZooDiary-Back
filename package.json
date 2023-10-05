@@ -11,9 +11,12 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "bun --hot run index.ts"
+    "dev": "bun --hot run index.ts",
+    "postinstall": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
     "@types/path-to-regexp": "^1.7.0",
     "@types/swagger-ui-dist": "^3.30.2",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
