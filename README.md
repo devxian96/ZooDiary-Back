@@ -3,21 +3,28 @@
 반려동물의 일상 기록 및 공유
 
 ## 프로젝트 실행
+
 ```bash
 bun install
 bun dev
 ```
+
 > 이 프로젝트는 bun v1.0.3. [Bun](https://bun.sh) 을 사용하여 개발이 되었습니다.
 
 ## 기능
+
 - JWT 로그인, 회원가입
 - 게시판 CRUD
 - 이미지 업로드
 
 ## 의존성
+
 - bun
 - eslint
 - prettier
+- commitlint
+- husky
+- lint-staged
 - Prisma
 - rand-token
 - jsonwebtoken
