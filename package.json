@@ -1,0 +1,28 @@
+{
+  "name": "zoodiary-back",
+  "description": "반려동물 일기장 api",
+  "version": "1.0.0",
+  "module": "index.ts",
+  "license": "MIT",
+  "repository": "https://github.com/devxian96",
+  "author": {
+    "name": "SeokHyeon Jang",
+    "email": "coolman555@me.com"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot run index.ts"
+  },
+  "devDependencies": {
+    "@types/path-to-regexp": "^1.7.0",
+    "@types/swagger-ui-dist": "^3.30.2",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "path-to-regexp": "^6.2.1",
+    "swagger-ui-dist": "^5.9.0"
+  }
+}
