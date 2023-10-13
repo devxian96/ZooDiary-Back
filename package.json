@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "dotenv -e .env.local bun --hot run index.ts",
+    "dev": "bun --hot run index.ts",
     "start": "bun run index.ts",
     "postinstall": "husky install"
   },
@@ -20,13 +20,13 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@types/path-to-regexp": "^1.7.0",
     "@types/swagger-ui-dist": "^3.30.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
     "bun-types": "latest",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.50.0",
+    "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
     "prettier": "^3.0.3"
   },
@@ -34,13 +34,12 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.4.1",
+    "@prisma/client": "^5.4.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
     "jsonwebtoken": "^9.0.2",
-    "multer": "^1.4.5-lts.1",
+    "multer": "1.4.5-lts.1",
     "path-to-regexp": "^6.2.1",
-    "prisma": "^5.4.1",
+    "prisma": "^5.4.2",
     "rand-token": "^1.0.1",
     "swagger-ui-dist": "^5.9.0"
   },

@@ -1,5 +1,5 @@
 import { bunAPI } from "bunApi";
-import { v1Router } from "./controllers";
+import { v1Router } from "@controllers/v1";
 
 const app = bunAPI();
 

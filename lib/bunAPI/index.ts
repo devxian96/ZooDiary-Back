@@ -38,7 +38,10 @@ type RequestWithOmit = Omit<RequestWithType, "body"> & {
   body?: Record<string, unknown>;
 };
 
-type ApiCallBack = (request: RequestWithOmit, response: typeof res) => Response;
+type ApiCallBack = (
+  request: RequestWithOmit,
+  response: typeof res,
+) => Response | Promise<Response>;
 type CallBack = () => void;
 
 const getAPIList: APIList[] = [];
@@ -146,7 +149,6 @@ const listen = (port = 3000, callBack: CallBack) => {
         });
 
         apiToSwagger(postAPIList).forEach((api) => {
-          console.log(">>", api);
           swaggerJson.paths[api.path] = {
             post: {
               tags: [getTag(api.path)],
@@ -214,7 +216,7 @@ const listen = (port = 3000, callBack: CallBack) => {
         try {
           return apiCallBack(
             { ...req, body: await req.json() } as RequestWithOmit,
-            res
+            res,
           );
         } catch {
           return apiCallBack({ ...req } as RequestWithOmit, res);
@@ -272,7 +274,7 @@ const addRoute = (
   path: string,
   apiCallBack: ApiCallBack,
   apiList: APIList[],
-  option: ApiOption
+  option: ApiOption,
 ) => {
   const keys: Key[] = [];
   const regexp = pathToRegexp(path, keys);
@@ -340,7 +342,7 @@ export interface RouterGroup {
 }
 export const group = (
   groupPath: string,
-  callBack: (router: RouterGroup) => void
+  callBack: (router: RouterGroup) => void,
 ) => {
   const newRouter = Router();
   callBack(newRouter);
@@ -357,7 +359,7 @@ const serveStatic = (path: string) => {
   staticList.push(path);
 };
 
-export const Router = <T, K, L>() => {
+export const Router = () => {
   return {
     get,
     post,
@@ -380,7 +382,7 @@ export function use(router: RouterGroup): void;
 // Implement the function
 export function use(
   pathOrRouter: string | RouterGroup,
-  router?: RouterGroup
+  router?: RouterGroup,
 ): void {
   let path: string;
 
@@ -430,7 +432,7 @@ export const bunAPI = () => {
     group,
     listen,
     serveStatic,
-    Router: Router<ApiOption, RequestWithType, APIList>,
+    Router,
     use,
   };
 };
