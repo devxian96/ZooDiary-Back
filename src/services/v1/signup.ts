@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { crypt } from "@utils/crypt";
 
 const prisma = new PrismaClient();
 
@@ -10,7 +11,7 @@ export const signup = async (
   return await prisma.user.create({
     data: {
       user,
-      password,
+      password: crypt(password),
       nickName,
     },
   });
