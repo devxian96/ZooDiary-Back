@@ -25,6 +25,15 @@
       "bunApi": [
         "./lib/bunAPI"
       ],
+      "@controllers/*": [
+        "./src/controllers/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
     }
   }
 }
