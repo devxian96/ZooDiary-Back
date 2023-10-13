@@ -18,6 +18,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/crypto-js": "^4.1.2",
+    "@types/jsonwebtoken": "^9.0.3",
     "@types/path-to-regexp": "^1.7.0",
     "@types/swagger-ui-dist": "^3.30.2",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
@@ -28,6 +31,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3"
   },
   "peerDependencies": {
@@ -36,11 +40,11 @@
   "dependencies": {
     "@prisma/client": "^5.4.2",
     "cors": "^2.8.5",
-    "jsonwebtoken": "^9.0.2",
+    "crypto-js": "^4.1.1",
+    "jose": "^4.15.3",
     "multer": "1.4.5-lts.1",
     "path-to-regexp": "^6.2.1",
     "prisma": "^5.4.2",
-    "rand-token": "^1.0.1",
     "swagger-ui-dist": "^5.9.0"
   },
   "lint-staged": {
