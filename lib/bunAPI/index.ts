@@ -253,6 +253,7 @@ const res = {
       headers: {
         "Content-type": "text/html; charset=utf-8",
         "Content-Encoding": "gzip",
+        "Access-Control-Allow-Origin": "*",
       },
     });
   },
