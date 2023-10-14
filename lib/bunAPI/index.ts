@@ -94,7 +94,7 @@ const responses = {
 
 const CORS_HEADERS = {
   headers: {
-    "Access-Control-Allow-Origin": "local.zoodiary.com",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   },
@@ -256,7 +256,7 @@ const res = {
         headers: {
           "Content-Type": "application/json",
           "Content-Encoding": "gzip",
-          "Access-Control-Allow-Origin": "local.zoodiary.com",
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
         },
@@ -270,7 +270,7 @@ const res = {
       headers: {
         "Content-type": "text/html; charset=utf-8",
         "Content-Encoding": "gzip",
-        "Access-Control-Allow-Origin": "local.zoodiary.com",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
       },
