@@ -27,8 +27,8 @@ export const isFilter = (
     return true;
   }
 
-  // max length 20
-  if (data.length > 20) {
+  // max length 40
+  if (data.length > 40) {
     return true;
   }
 

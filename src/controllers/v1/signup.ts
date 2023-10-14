@@ -14,7 +14,7 @@ router.post(
     if (
       isFilter(user, true, true) ||
       isFilter(password, false, true) ||
-      isFilter(nickName, true, true)
+      isFilter(nickName, true, false)
     ) {
       return res.status(400).send(ResponseMessage("잘못된 정보가 있습니다."));
     }
