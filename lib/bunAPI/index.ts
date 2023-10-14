@@ -92,6 +92,14 @@ const responses = {
   403: { description: "권한이 없음" },
 } as const;
 
+const CORS_HEADERS = {
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST",
+    "Access-Control-Allow-Headers": "Content-Type",
+  },
+} as const;
+
 const getTag = (path: string) => {
   const split = path.split("/");
   return split[split.length - 2];
@@ -103,6 +111,12 @@ const listen = (port = 3000, callBack: CallBack) => {
     async fetch(req: RequestWithType) {
       const { pathname, searchParams } = new URL(req.url);
       const method = req.method.toLowerCase();
+
+      // Handle CORS preflight requests
+      if (req.method === "OPTIONS") {
+        const res = new Response("Departed", CORS_HEADERS);
+        return res;
+      }
 
       // swagger
       if (method === "get" && pathname === "/api-docs") {
