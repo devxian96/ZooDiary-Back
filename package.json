@@ -19,6 +19,7 @@
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.14",
     "@types/crypto-js": "^4.1.2",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/path-to-regexp": "^1.7.0",
