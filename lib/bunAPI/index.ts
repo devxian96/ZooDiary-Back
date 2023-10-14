@@ -269,6 +269,7 @@ const res = {
         "Content-Encoding": "gzip",
         "Access-Control-Allow-Origin": "local.zoodiary.com",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
       },
     });
   },
