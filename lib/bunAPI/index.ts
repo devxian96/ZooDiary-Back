@@ -253,7 +253,7 @@ const res = {
       headers: {
         "Content-type": "text/html; charset=utf-8",
         "Content-Encoding": "gzip",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "local.zoodiary.com",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       },
     });
