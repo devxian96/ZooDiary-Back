@@ -17,9 +17,13 @@ export const signup = async (
   });
 };
 
-export const isFilter = (data: string) => {
-  // min length 4
-  if (data.length < 4) {
+export const isFilter = (
+  data: string,
+  specialChar: boolean,
+  koreanChar: boolean,
+) => {
+  // min length 1
+  if (data.length < 1) {
     return true;
   }
 
@@ -30,13 +34,13 @@ export const isFilter = (data: string) => {
 
   // check special character
   const specialCharacter = /[~!@#$%^&*()_+|<>?:{}]/;
-  if (specialCharacter.test(data)) {
+  if (specialChar && specialCharacter.test(data)) {
     return true;
   }
 
   // check korean
   const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  if (korean.test(data)) {
+  if (koreanChar && korean.test(data)) {
     return true;
   }
 
