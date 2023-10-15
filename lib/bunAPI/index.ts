@@ -30,11 +30,12 @@ export interface ApiOption {
   }[];
 }
 
-export interface RequestWithType extends Request {
+interface RequestWithType extends Request {
   params: Record<string, string>;
   query: URLSearchParams;
+  header: Headers;
 }
-type RequestWithOmit = Omit<RequestWithType, "body"> & {
+export type RequestWithOmit = Omit<RequestWithType, "body"> & {
   body?: Record<string, unknown>;
 };
 
@@ -227,6 +228,7 @@ const listen = (port = 3000, callBack: CallBack) => {
 
         req.params = params;
         req.query = searchParams;
+        req.header = new Headers(req.headers);
         try {
           return apiCallBack(
             { ...req, body: await req.json() } as RequestWithOmit,
@@ -245,7 +247,12 @@ const listen = (port = 3000, callBack: CallBack) => {
   callBack();
 };
 
-const res = {
+export interface Res {
+  statusCode: number | null;
+  send(data: ResponseData): Response;
+  status(status: number): Res;
+}
+const res: Res = {
   statusCode: null as number | null,
   send(data: ResponseData) {
     if (data && typeof data === "object") {
