@@ -30,17 +30,14 @@ export interface ApiOption {
   }[];
 }
 
-interface RequestWithType extends Request {
+export interface RequestWithType extends Request {
   params: Record<string, string>;
   query: URLSearchParams;
   header: Headers;
 }
-export type RequestWithOmit = Omit<RequestWithType, "body"> & {
-  body?: Record<string, unknown>;
-};
 
 type ApiCallBack = (
-  request: RequestWithOmit,
+  request: RequestWithType,
   response: typeof res,
 ) => Response | Promise<Response>;
 type CallBack = () => void;
@@ -230,13 +227,20 @@ const listen = (port = 3000, callBack: CallBack) => {
         req.query = searchParams;
         req.header = new Headers(req.headers);
         try {
-          return apiCallBack(
-            { ...req, body: await req.json() } as RequestWithOmit,
-            res,
-          );
+          return apiCallBack(req, res);
         } catch {
-          return apiCallBack({ ...req } as RequestWithOmit, res);
+          throw new Error("apiCallBack error");
         }
+      }
+
+      // public
+      const dir = import.meta.dir.split("/");
+      const pathName = `${dir
+        .splice(0, dir.length - 2)
+        .join("/")}/public${pathname}`;
+      const file = await Bun.file(pathName);
+      if (await file.exists()) {
+        return new Response(file, { status: 200 });
       }
 
       return new Response(undefined, { status: 404 }); // Not Found

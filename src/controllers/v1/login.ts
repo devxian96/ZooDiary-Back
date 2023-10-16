@@ -7,8 +7,9 @@ const router = Router();
 router.post(
   "/login",
   async (req, res) => {
-    const user = req?.body?.user as string;
-    const password = req?.body?.password as string;
+    const body = await req.json();
+    const user = body.user as string;
+    const password = body.password as string;
 
     return await login(user, password).then(async (userData) => {
       if (!userData) {
