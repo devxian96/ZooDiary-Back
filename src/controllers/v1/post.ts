@@ -15,12 +15,13 @@ router.post(
         .send(ResponseMessage("인증되지 않은 사용자입니다."));
     }
 
-    const picture = req?.body?.picture as string;
-    const content = req?.body?.content as string;
+    const body = await req.json();
+    const picture = body.picture as string;
+    const content = body.content as string;
+    const chips = body.chips as string;
 
-    return await postWrite(userData, content, picture)
-      .then((data) => {
-        console.log(data);
+    return await postWrite(userData, content, picture, chips)
+      .then(() => {
         return res
           .status(200)
           .send(ResponseMessage("게시글이 작성되었습니다."));
@@ -48,6 +49,12 @@ router.post(
         in: "body",
         description: "일기 내용",
         required: true,
+      },
+      {
+        name: "chips",
+        in: "body",
+        description: "태그 (,)으로 태그를 구분합니다.",
+        required: false,
       },
     ],
   },
