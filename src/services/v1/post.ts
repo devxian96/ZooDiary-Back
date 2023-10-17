@@ -5,7 +5,8 @@ const prisma = new PrismaClient();
 export const postWrite = async (
   user: string,
   content: string,
-  picture: string,
+  picture?: string,
+  chips?: string,
 ) => {
   return await prisma.post.create({
     data: {
@@ -16,6 +17,7 @@ export const postWrite = async (
       },
       content,
       picture,
+      chips,
     },
   });
 };

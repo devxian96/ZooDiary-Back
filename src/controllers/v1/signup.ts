@@ -7,9 +7,10 @@ const router = Router();
 router.post(
   "/signup",
   async (req, res) => {
-    const user = req?.body?.user as string;
-    const password = req?.body?.password as string;
-    const nickName = req?.body?.nickName as string;
+    const body = await req.json();
+    const user = body.user as string;
+    const password = body.password as string;
+    const nickName = body.nickName as string;
 
     if (
       isFilter(user, true, true) ||
