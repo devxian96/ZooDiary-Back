@@ -20,6 +20,7 @@ model User {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
   Post      Post[]
+  Heart     Heart[]
 }
 
 model Post {
@@ -32,4 +33,16 @@ model Post {
   deletedAt DateTime?
   user      User      @relation(fields: [userId], references: [id])
   userId    Int
+  Heart     Heart[]
+}
+
+model Heart {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  post      Post      @relation(fields: [postId], references: [id])
+  postId    Int
 }
