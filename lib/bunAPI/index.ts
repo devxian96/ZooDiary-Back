@@ -51,7 +51,7 @@ const apiListBook: Record<string, APIList[]> = {
   get: getAPIList,
   post: postAPIList,
   put: putAPIList,
-  del: delAPIList,
+  delete: delAPIList,
 } as const;
 
 const apiToSwagger = (apiList: APIList[]) => {
@@ -149,7 +149,9 @@ const listen = (port = 3000, callBack: CallBack) => {
         };
 
         apiToSwagger(getAPIList).forEach((api) => {
+          const pathObj = swaggerJson.paths[api.path] || {};
           swaggerJson.paths[api.path] = {
+            ...pathObj,
             get: {
               tags: [getTag(api.path)],
               summary: api.summary,
@@ -161,7 +163,9 @@ const listen = (port = 3000, callBack: CallBack) => {
         });
 
         apiToSwagger(postAPIList).forEach((api) => {
+          const pathObj = swaggerJson.paths[api.path] || {};
           swaggerJson.paths[api.path] = {
+            ...pathObj,
             post: {
               tags: [getTag(api.path)],
               summary: api.summary,
@@ -173,7 +177,9 @@ const listen = (port = 3000, callBack: CallBack) => {
         });
 
         apiToSwagger(putAPIList).forEach((api) => {
+          const pathObj = swaggerJson.paths[api.path] || {};
           swaggerJson.paths[api.path] = {
+            ...pathObj,
             put: {
               tags: [getTag(api.path)],
               summary: api.summary,
@@ -185,7 +191,9 @@ const listen = (port = 3000, callBack: CallBack) => {
         });
 
         apiToSwagger(delAPIList).forEach((api) => {
+          const pathObj = swaggerJson.paths[api.path] || {};
           swaggerJson.paths[api.path] = {
+            ...pathObj,
             delete: {
               tags: [getTag(api.path)],
               summary: api.summary,

@@ -17,11 +17,15 @@ router.post(
 
     const id = parseInt(req.params.id, 10);
     const result = await heartUp(id);
-    console.log(result);
 
+    if (result) {
+      return res
+        .status(200)
+        .send(ResponseMessage("하트가 증가했습니다.", userData));
+    }
     return res
       .status(200)
-      .send(ResponseMessage("하트가 증가했습니다.", userData));
+      .send(ResponseMessage("하트가 감소했습니다.", userData));
   },
   {
     summary: "하트 누르기 (Auth Required)",
