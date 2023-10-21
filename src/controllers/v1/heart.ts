@@ -15,17 +15,23 @@ router.post(
         .send(ResponseMessage("인증되지 않은 사용자입니다."));
     }
 
-    const id = parseInt(req.params.id, 10);
-    const result = await heartUp(id);
+    try {
+      const id = parseInt(req.params.id, 10);
+      const result = await heartUp(id);
 
-    if (result) {
+      if (result) {
+        return res
+          .status(200)
+          .send(ResponseMessage("하트가 증가했습니다.", userData));
+      }
       return res
         .status(200)
-        .send(ResponseMessage("하트가 증가했습니다.", userData));
+        .send(ResponseMessage("하트가 감소했습니다.", userData));
+    } catch {
+      return res
+        .status(400)
+        .send(ResponseMessage("게시글이 존재하지 않습니다."));
     }
-    return res
-      .status(200)
-      .send(ResponseMessage("하트가 감소했습니다.", userData));
   },
   {
     summary: "하트 누르기 (Auth Required)",
