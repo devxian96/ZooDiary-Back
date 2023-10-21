@@ -11,6 +11,10 @@ bun dev
 
 > 이 프로젝트는 bun v1.0.3. [Bun](https://bun.sh) 을 사용하여 개발이 되었습니다.
 
+zoodiary-front(https://github.com/brom5033/ZooDiary)  
+위 프로젝트는 프론트 프로젝트로,
+zoodiary-back 레포와 함께 실행해야합니다.
+
 ## 기능
 
 - JWT 로그인, 회원가입
