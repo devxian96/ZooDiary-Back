@@ -35,7 +35,7 @@ router.post(
       });
   },
   {
-    summary: "글쓰기",
+    summary: "글쓰기 (Auth Required)",
     description: "담벼락용 사진과 게시글을 작성합니다.",
     parameters: [
       {
