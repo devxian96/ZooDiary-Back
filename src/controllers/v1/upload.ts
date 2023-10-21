@@ -42,7 +42,7 @@ router.post(
       );
   },
   {
-    summary: "이미지 업로드",
+    summary: "이미지 업로드 (Auth Required)",
     description: "jpg, png, gif 이미지를 업로드 후 이미지 경로를 반환합니다.",
   },
 );
