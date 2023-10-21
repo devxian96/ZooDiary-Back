@@ -83,9 +83,16 @@ export const postRead = async (
           picture: true,
         },
       },
+
       Heart: {
         select: {
-          user: true,
+          user: {
+            select: {
+              nickName: true,
+              picture: true,
+              createdAt: true,
+            },
+          },
         },
       },
     },
