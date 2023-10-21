@@ -5,6 +5,7 @@ import { loginRouter } from "@controllers/v1/login";
 import { postRouter } from "@controllers/v1/post";
 import { uploadRouter } from "@controllers/v1/upload";
 import { heartRouter } from "@controllers/v1/heart";
+import { profileRouter } from "@controllers/v1/profile";
 
 const router = Router();
 
@@ -15,6 +16,7 @@ router.group("/v1", (router) => {
   router.use(postRouter);
   router.use(uploadRouter);
   router.use(heartRouter);
+  router.use(profileRouter);
 });
 
 export { router as v1Router };
