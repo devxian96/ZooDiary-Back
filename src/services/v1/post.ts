@@ -21,3 +21,80 @@ export const postWrite = async (
     },
   });
 };
+
+export const postUpdate = async (
+  id: number,
+  user: string,
+  content: string,
+  picture?: string,
+  chips?: string,
+) => {
+  const post = await prisma.post.findUnique({
+    where: {
+      id,
+    },
+    select: {
+      user: {
+        select: {
+          user: true,
+        },
+      },
+    },
+  });
+
+  if (post?.user.user !== user) {
+    throw new Error("권한이 없습니다.");
+  }
+
+  return await prisma.post.update({
+    where: {
+      id,
+    },
+    data: {
+      content,
+      picture,
+      chips,
+    },
+  });
+};
+
+export const postRead = async (
+  limit: number = 10,
+  offset: number = 0,
+  user?: string,
+) => {
+  return await prisma.post.findMany({
+    take: limit,
+    skip: offset,
+    where: {
+      user: {
+        user: user,
+      },
+    },
+  });
+};
+
+export const postDelete = async (id: number, user: string) => {
+  const post = await prisma.post.findUnique({
+    where: {
+      id,
+    },
+    select: {
+      user: {
+        select: {
+          user: true,
+        },
+      },
+    },
+  });
+
+  if (post?.user.user !== user) {
+    throw new Error("권한이 없습니다.");
+  }
+
+  return await prisma.post.delete({
+    where: {
+      id,
+    },
+  });
+};
