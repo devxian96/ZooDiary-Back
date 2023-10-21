@@ -63,12 +63,30 @@ export const postRead = async (
   offset: number = 0,
   user?: string,
 ) => {
+  // Heart count of each post
+
   return await prisma.post.findMany({
     take: limit,
     skip: offset,
     where: {
       user: {
         user: user,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      user: {
+        select: {
+          nickName: true,
+          picture: true,
+        },
+      },
+      Heart: {
+        select: {
+          user: true,
+        },
       },
     },
   });
