@@ -17,7 +17,7 @@ router.post(
 
     try {
       const id = parseInt(req.params.id, 10);
-      const result = await heartUp(id);
+      const result = await heartUp(id, userData);
 
       if (result) {
         return res

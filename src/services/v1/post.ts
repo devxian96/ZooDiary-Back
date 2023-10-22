@@ -88,6 +88,7 @@ export const postRead = async (
         select: {
           user: {
             select: {
+              user: true,
               nickName: true,
               picture: true,
               createdAt: true,
