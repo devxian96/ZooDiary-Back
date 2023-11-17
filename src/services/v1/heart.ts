@@ -7,6 +7,9 @@ export const heartUp = async (id: number, userData: string) => {
   const heart = await prisma.heart.findFirst({
     where: {
       postId: id,
+      user: {
+        user: userData,
+      },
     },
   });
 
