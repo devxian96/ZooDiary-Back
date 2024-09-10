@@ -44,7 +44,7 @@
     "crypto-js": "^4.1.1",
     "jose": "^4.15.3",
     "multer": "1.4.5-lts.1",
-    "path-to-regexp": "^6.2.1",
+    "path-to-regexp": "^8.1.0",
     "prisma": "^5.4.2",
     "swagger-ui-dist": "^5.9.0",
     "uuid": "^9.0.1"
